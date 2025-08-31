@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uwais Toys - Mainan Edukatif Anak</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variabel Warna */
+        :root {
+            --primary: #FF9E00;
+            --secondary: #4ECDC4;
+            --accent: #FF6B6B;
+            --light: #F7F9FC;
+            --dark: #2D3047;
+            --success: #77DD77;
+            --purple: #9b59b6;
+            --yellow: #FFD166;
+            --pink: #FFAEC0;
+        }
+        
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: white;
+            font-size: 2rem;
+            margin-left: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: white;
+            animation: bounce 2s infinite;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FF9E00" opacity="0.2"/><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T30,70 T10,50 T30,30" fill="none" stroke="%23FF6B6B" stroke-width="2" opacity="0.3"/></svg>');
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, var(--secondary) 0%, transparent 25%),
+                        radial-gradient(circle at 80% 20%, var(--accent) 0%, transparent 25%);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            text-shadow: 2px 2px 0px white;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            border: 3px solid white;
+            font-size: 1.2rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 0px #FFD166;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+            transition: all 0.3s ease;
+        }
+        
+        .about-image img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        /* Vision Mission */
+        .vision-mission {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--purple) 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            color: var(--dark);
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 5px solid var(--yellow);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .card i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: var(--light);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--light);
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 3px solid var(--primary);
+            color: var(--dark);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 5px solid var(--pink);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image i {
+            font-size: 5rem;
+            color: white;
+            opacity: 0.9;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+        
+        .product-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 0px #FFD166;
+        }
+        
+        /* Why Choose Us */
+        .why-choose {
+            padding: 80px 0;
+            background-color: white;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        
+        .feature {
+            text-align: center;
+            width: 250px;
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            background-color: rgba(78, 205, 196, 0.1);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature:hover i {
+            background-color: var(--secondary);
+            color: white;
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--purple) 100%);
+            color: white;
+            padding: 60px 0 30px;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--yellow);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--yellow);
+            text-decoration: underline;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px) rotate(10deg);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+        
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Decorative Elements */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .bubble-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .bubble-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        .bubble-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation: float 12s infinite ease-in-out;
+        }
+        
+        .star {
+            position: absolute;
+            color: var(--yellow);
+            font-size: 2rem;
+            z-index: -1;
+            opacity: 0.7;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        .star-1 {
+            top: 15%;
+            right: 15%;
+        }
+        
+        .star-2 {
+            bottom: 25%;
+            left: 15%;
+        }
+        
+        .star-3 {
+            top: 40%;
+            left: 5%;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .features {
+                gap: 20px;
+            }
+            
+            .feature {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Elements -->
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="star star-1">★</div>
+    <div class="star star-2">★</div>
+    <div class="star star-3">★</div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1>Uwais Toys</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Mainan Edukatif untuk Masa Depan Cerah</h2>
+            <p>Setiap mainan di Uwais Toys dipilih dengan hati untuk menemani tumbuh kembang, merangsang kreativitas, dan membangun imajinasi anak-anak.</p>
+            <a href="#products" class="btn">Jelajahi Mainan</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Uwais Toys</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Uwais Toys adalah toko mainan anak-anak yang berawal dari sebuah semangat kecil: melihat senyum bahagia di wajah setiap anak. Kami percaya bahwa setiap mainan bukan hanya sekadar benda, tapi juga alat untuk menemani tumbuh kembang, merangsang kreativitas, dan membangun imajinasi.</p>
+                    <p>Dimulai dari pedagang kecil, kini kami hadir di dunia digital untuk menjangkau lebih banyak orang tua yang peduli dengan kualitas dan manfaat mainan. Kami selalu memilih mainan yang edukatif dan aman, karena bagi kami, keselamatan dan kebahagiaan anak adalah prioritas utama.</p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-store" style="font-size: 250px; color: #4ECDC4;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision-mission">
+        <div class="container">
+            <h2 class="section-title">Visi & Misi Kami</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Visi Kami</h3>
+                    <p>Menjadi toko mainan terpercaya yang menyediakan mainan berkualitas tinggi, aman, dan edukatif yang dapat mendukung setiap tahapan perkembangan anak.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Misi Kami</h3>
+                    <p>Menyediakan mainan edukatif, mengutamakan keamanan, dan membangun kepercayaan dengan pelayanan terbaik untuk pengalaman belanja yang menyenangkan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Mainan Kami</h2>
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="edu">Edukasi</button>
+                <button class="filter-btn" data-filter="doll">Boneka</button>
+                <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+                <button class="filter-btn" data-filter="diy">DIY</button>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="edu">
+                    <div class="product-image">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Puzzle Edukatif</h3>
+                        <p>Meningkatkan kemampuan memecahkan masalah dan motorik halus</p>
+                        <div class="product-price">Rp 85.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-category="doll">
+                    <div class="product-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Robot Interaktif</h3>
+                        <p>Robot cerdas yang dapat berinteraksi dengan anak-anak</p>
+                        <div class="product-price">Rp 150.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-category="outdoor">
+                    <div class="product-image">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Set Olahraga Anak</h3>
+                        <p>Mendorong aktivitas fisik dan kerja sama tim</p>
+                        <div class="product-price">Rp 120.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-category="diy">
+                    <div class="product-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Set Melukis Kreatif</h3>
+                        <p>Mengasah kreativitas dan ekspresi diri</p>
+                        <div class="product-price">Rp 95.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-category="edu">
+                    <div class="product-image">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Blok Konstruksi</h3>
+                        <p>Mengembangkan kemampuan spasial dan imajinasi</p>
+                        <div class="product-price">Rp 110.000</div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-category="doll">
+                    <div class="product-image">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Boneka Karakter</h3>
+                        <p>Boneka lucu dengan karakter favorit anak-anak</p>
+                        <div class="product-price">Rp 75.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Mengapa Memilih Uwais Toys?</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-star"></i>
+                    <h3>Pilihan Terbaik</h3>
+                    <p>Kami memilih yang terbaik untuk tumbuh kembang anak Anda</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tag"></i>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Kualitas premium dengan harga yang bersahabat</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-smile"></i>
+                    <h3>Pelayanan Ramah</h3>
+                    <p>Kami siap membantu menemukan mainan yang cocok</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Keamanan Terjamin</h3>
+                    <p>Semua produk bebas dari bahan berbahaya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Uwais Toys</h3>
+                    <p>Menyediakan mainan edukatif dan aman untuk mendukung tumbuh kembang anak dengan harga terjangkau.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Mainan Edukatif No. 123, Jakarta</p>
+                    <p><i class="fas fa-phone"></i> (021) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@uwaitoys.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Uwais Toys. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter produk
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Hapus kelas active dari semua tombol
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Tambahkan kelas active ke tombol yang diklik
+                    button.classList.add('active');
+                    
+                    // Dapatkan nilai filter
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    // Filter produk
+                    productCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = 1;
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = 0;
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Animasi saat scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.card, .feature, .product-card');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect();
+                    
+                    // Jika element terlihat di layar
+                    if(position.top < window.innerHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0) rotate(0)';
+                    }
+                });
+            };
+            
+            // Set properti awal untuk animasi
+            const cards = document.querySelectorAll('.card, .feature, .product-card');
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px) rotate(5deg)';
+                card.style.transition = 'all 0.8s ease';
+            });
+            
+            // Panggil saat scroll
+            window.addEventListener('scroll', animateOnScroll);
+            // Panggil sekali saat pertama dimuat
+            animateOnScroll();
+            
+            // Animasi untuk elemen dekoratif
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => {
+                bubble.style.animationDelay = `${Math.random() * 2}s`;
+            });
+            
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                star.style.animationDelay = `${Math.random() * 2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
